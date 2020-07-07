@@ -2,8 +2,9 @@
   "name": "auth-practice",
   "version": "1.0.0",
   "description": "Practicing authorization and stuff or whatever",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
+    "test": "node server.js",
     "dev": "nodemon server.js"
   },
   "repository": {

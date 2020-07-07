@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
-import {login} from './UserFunctions';
+import {register} from './UserFunctions';
 
-class Login extends Component {
+class Register extends Component {
     constructor() {
         super()
         this.state = {
+            first_name: '',
+            last_name: '',
             email: '',
             password: ''
         }
@@ -21,13 +23,15 @@ class Login extends Component {
         e.preventDefault();
 
         const user = {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
             email: this.state.email,
             password: this.state.password
         }
 
-        login(user).then(res => {
+        register(user).then(res => {
             if (res) {
-                this.props.history.push('/profile');
+                this.props.history.push('/login');
             }
         });
     }
@@ -37,8 +41,16 @@ class Login extends Component {
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6'>
-                        <form noValidate onSubmit={this.onSubmit}>
+                        <form onSubmit={this.onSubmit}>
                             <h1>Please Sign In</h1>
+                            <div className='form-group'>
+                                <label htmlFor='first_name'>First Name</label>
+                                <input type='text' className='form-control' name='first_name' placeholder='Enter First Name' value={this.state.first_name} onChange={this.onChange} />
+                            </div>
+                            <div className='form-group'>
+                                <label htmlFor='last_name'>Last Name</label>
+                                <input type='text' className='form-control' name='last_name' placeholder='Enter Last Name' value={this.state.last_name} onChange={this.onChange} />
+                            </div>
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>
                                 <input type='email' className='form-control' name='email' placeholder='Enter Email' value={this.state.email} onChange={this.onChange} />
@@ -47,7 +59,7 @@ class Login extends Component {
                                 <label htmlFor='password'>Password</label>
                                 <input type='password' className='form-control' name='password' placeholder='Enter Password' value={this.state.password} onChange={this.onChange} />
                             </div>
-                            <button type='submit' className='btn btn-lg btn-primary btn-block'>Sign In</button>
+                            <button type='submit' className='btn btn-lg btn-primary btn-block'>Register</button>
                         </form>
                     </div>
                 </div>
@@ -56,4 +68,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default Register;

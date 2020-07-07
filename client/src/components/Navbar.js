@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Navbar extends Component {
     logOut(e) {
-        e.preventDefault();
-        localStorage.removeItem('usertoken');
-        this.props.history.push('/');
+        e.preventDefault()
+        localStorage.removeItem('usertoken')
+        this.props.history.push('/')
     }
 
     render() {
@@ -31,7 +31,7 @@ class Navbar extends Component {
                     </Link>
                 </li>
                 <li className='nav-item'>
-                    <a href='' onClick={this.logOut.bind(this)} className='nav-link'>
+                    <a href="" onClick={this.logOut.bind(this)} className='nav-link'>
                         Logout
                     </a>
                 </li>
@@ -39,7 +39,7 @@ class Navbar extends Component {
         )
 
         return (
-            <nav className='navbar navbar-expand-lgnavbar-dark bg-darnk rounded'>
+            <nav className='navbar navbar-expand-lg navbar-dark bg-dark rounded'>
                 <button className='navbar-toggler'
                 type='button'
                 data-toggle='colapse'
@@ -51,7 +51,7 @@ class Navbar extends Component {
                 </button>
 
                 <div className='collapse navbar-collapse justify-content-md-center' id='navbar1'>
-                    <ul className='nabvbar-nav'>
+                    <ul className='navbar-nav'>
                         <li className='nav-item'>
                             <Link to='/' className='nav-link'>
                                 Home
@@ -64,3 +64,5 @@ class Navbar extends Component {
         )
     }
 }
+
+export default withRouter(Navbar);
