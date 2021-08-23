@@ -53,8 +53,8 @@ users.post('/login', (req,res) => {
     })
     .then(user => {
         if (user) {
-            console.log('1: ' + req.body.password);
-            console.log('2: ' + user.password);
+            // console.log('1: ' + req.body.password);
+            // console.log('2: ' + user.password);
             if (bcrypt.compare(req.body.password, user.password)) {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440
